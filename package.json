@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "name": "vue-layout-sidebar",
+  "version": "1.0.0",
+  "description": "Layout with small icon style sidebar.",
+  "author": "Adrijan Mitrov",
+  "license": "MIT",
+  "main": "./dist/index.cjs.js",
+  "scripts": {
+    "dev": "vue serve ./src/App.vue",
+    "build": "bili --name index --plugin vue --vue.css false"
+  },
+  "devDependencies": {
+    "bili": "^3.4.2",
+    "node-sass": "^4.14.1",
+    "rollup-plugin-vue": "^4.6.1",
+    "sass-loader": "^9.0.2",
+    "vue-template-compiler": "^2.5.22"
+  },
+  "files": [
+    "dist/*"
+  ]
+}
