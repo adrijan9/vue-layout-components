@@ -7,6 +7,10 @@
 
     &-content {
         display: block;
-        width: calc(100% - 90px);
+        width: 100%;
+
+        @media (min-width: $mobileScreenStart) {
+            width: calc(100% - 90px);
+        }
     }
 }
