@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": "vue-layout-sidebar",
+  "name": "vue-layout",
   "version": "1.0.0",
-  "description": "Layout with small icon style sidebar.",
+  "description": "Layout with small icons style and sidebar.",
   "author": "Adrijan Mitrov",
   "license": "MIT",
   "main": "./dist/index.cjs.js",

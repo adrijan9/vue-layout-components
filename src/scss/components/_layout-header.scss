@@ -1,0 +1,44 @@
+&-header {
+	align-items: center;
+	border-bottom: 1px solid $lightGrey;
+	display: flex;
+	padding: 1rem 0.75rem;
+
+	&-toggle {
+		align-items: center;
+		background-color: transparent;
+		border: none;
+		cursor: pointer;
+		display: flex;
+		flex-wrap: wrap;
+		height: 25px;
+		margin-right: 0.75rem;
+		outline: none;
+		padding: 0;
+		width: 25px;
+
+		@media (min-width: $mobileScreenStart) {
+			display: none;
+		}
+
+		span {
+			background-color: $black;
+			border-radius: 10px;
+			display: block;
+			height: 5px;
+			width: 100%;
+		}
+	}
+
+	&-holder {
+		display: flex;
+		flex: 1;
+		justify-content: space-between;
+	}
+
+	&-left {
+		h3 {
+			margin: 0;
+		}
+	}
+}
