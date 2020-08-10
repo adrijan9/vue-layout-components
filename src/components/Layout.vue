@@ -1,37 +1,41 @@
 <template>
 	<div class="layout">
-		<sidebar-menu :show="isSidebarOpen">
+		<sidebar-menu :show="isSidebarOpen"
+		              :logo-url="sidebarLogoUrl"
+		              :logo-image="sidebarLogoImage"
+		>
 			<slot name="sidebar"></slot>
 		</sidebar-menu>
 		<div class="layout-content">
-			<div class="layout-header">
+			<div class="layout-header"
+			     :class="{
+					'active': isSidebarOpen
+			     }"
+			>
 				<button class="layout-header-toggle"
 				        @click="isSidebarOpen = !isSidebarOpen"
 				>
-					<span></span>
-					<span></span>
-					<span></span>
+					<span aria-hidden="true"></span>
 				</button>
 				<div class="layout-header-holder">
 					<div class="layout-header-left">
 						<slot name="headerLeft" v-if="$slots.headerLeft"></slot>
-						<h3 v-if="title">
+						<h3 v-if="!$slots.headerLeft && title"
+						    class="layout-header-title"
+						>
 							<i v-if="icon" :class="icon"></i>
 							{{ title }}
 						</h3>
 					</div>
-					<div class="layout-header-right">
-						<slot name="headerRight" v-if="$slots.headerRight"></slot>
+					<div v-if="$slots.headerRight"
+					     class="layout-header-right"
+					>
+						<slot name="headerRight"></slot>
 					</div>
 				</div>
 			</div>
 			<div class="layout-body">
-				body
-			</div>
-			<div v-if="$slots.footer"
-			     class="layout-footer"
-			>
-				footer
+				<slot></slot>
 			</div>
 		</div>
 	</div>
@@ -40,6 +44,7 @@
 <script>
 	import "../scss/index.scss";
 	import SidebarMenu from "./Menu/SidebarMenu";
+	import debounce from "../utils/debounce";
 
 	export default {
 		components: {
@@ -53,6 +58,18 @@
 			icon: {
 				type: String,
 				default: null
+			},
+			sidebarLogoUrl: {
+				type: String,
+				default: "/"
+			},
+			sidebarLogoImage: {
+				type: String,
+				default: null
+			},
+			closeOnEsc: {
+				type: Boolean,
+				default: true
 			}
 		},
 		data: function(){
@@ -60,6 +77,21 @@
 				isSidebarOpen: false
 			};
 		},
-		methods: {}
+		created: function(){
+			let _parent = this;
+
+			window.VueLayout = {
+				_stgs: {
+					_esc: _parent.closeOnEsc,
+					_brk: 992
+				}
+			};
+
+			window.addEventListener("resize", debounce(function(event){
+				if(event.target.innerWidth >= window.VueLayout._stgs._brk) {
+					_parent.isSidebarOpen = false;
+				}
+			}, 500));
+		}
 	};
 </script>

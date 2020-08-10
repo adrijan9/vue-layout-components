@@ -4,10 +4,17 @@
 			'show': show
 	     }"
 	>
-		<a :href="logoUrl" class="logo">
-			<img :src="require(`@/assets/images/vuelogo.png`)" />
+		<a v-if="logoUrl"
+		   :href="logoUrl"
+		   class="logo"
+		>
+			<img v-if="logoImage"
+			     :src="logoImage"
+			/>
 		</a>
-		<slot></slot>
+		<div class="sidebar-menu-wrapper">
+			<slot></slot>
+		</div>
 	</div>
 </template>
 
@@ -21,29 +28,12 @@
 			},
 			logoUrl: {
 				type: String,
-				default: "/"
-			}
-		},
-		methods: {
-			sidebarNodes: function(){
-				let vm = this,
-					nodes = [];
-
-				if(this.$slots.default.length > 0){
-					nodes = vm.$slots.default.map(node => {
-						const title = vm.getNodeProps(node, "title");
-
-					});
-				}
-
-				return nodes;
+				default: null
 			},
-			getNodeProps: function(node, prop) {
-				return node.componentOptions.propsData.hasOwnProperty(prop) ? node.componentOptions.propsData[prop] : null;
+			logoImage: {
+				type: String,
+				default: null
 			}
-		},
-		mounted: function(){
-			this.sidebarNodes();
 		}
 	};
 </script>
