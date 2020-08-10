@@ -1,0 +1,94 @@
+&-header {
+	align-items: center;
+	border-bottom: 1px solid $lightGrey;
+	display: flex;
+	padding: 1rem 0.75rem;
+
+	&.active {
+		.layout-header-toggle > span {
+			height: 0;
+			&:after, &:before {
+				top: 0px;
+				left: 0;
+				width: 25px;
+			}
+			&:after {
+				transform: rotate(-45deg);
+			}
+			&:before {
+				transform: rotate(45deg);
+			}
+		}
+	}
+
+	&-toggle {
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		display: inline-block;
+		height: 25px;
+		line-height: 0.6;
+		margin-right: 10px;
+		outline: none;
+		padding: 0;
+		text-align: center;
+		width: 25px;
+		z-index: 0;
+
+		> span {
+			background: #293335;
+			border-radius: 1px;
+			display: inline-block;
+			height: 2px;
+			position: relative;
+			vertical-align: middle;
+			width: 25px;
+
+			&:before, &:after {
+				background: #293335;
+				border-radius: 1px;
+				content: "";
+				display: inline-block;
+				height: 2px;
+				position: absolute;
+				transition: all 200ms;
+			}
+
+			&:before {
+				left: 0;
+				top: -11px;
+				width: 25px;
+			}
+
+			&:after {
+				left: 0;
+				top: 10px;
+				width: 25px;
+			}
+		}
+
+		@media (min-width: $mobileScreenStart) {
+			display: none;
+		}
+	}
+
+	&-holder {
+		display: flex;
+		flex: 1;
+		justify-content: space-between;
+	}
+
+	&-left {
+		h3 {
+			margin: 0;
+		}
+	}
+
+	&-title {
+		font-size: 1rem;
+
+		@media (min-width: $mobileScreenStart) {
+			font-size: 1.17rem;
+		}
+	}
+}
