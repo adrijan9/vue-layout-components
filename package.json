@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/f3oall/awesome-notifications#readme",
   "keywords": [
+    "vue",
     "layout",
+    "components",
     "sidebar",
     "submenu",
     "header",
