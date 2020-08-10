@@ -48,6 +48,8 @@
 				<h2>Full screen sub heading</h2>
 			</sidebar-menu-item>
 		</template>
+
+		Body filling
 	</layout>
 </template>
 
