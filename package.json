@@ -7,7 +7,7 @@
   "main": "./dist/main.js",
   "scripts": {
     "dev": "vue serve ./src/App.vue",
-    "build": "bili --name index --plugin vue --vue.css false"
+    "build": "bili --name main --plugin vue --vue.css false"
   },
   "bugs": {
     "url": "https://github.com/adrijan9/vue-layout-components/issues"
