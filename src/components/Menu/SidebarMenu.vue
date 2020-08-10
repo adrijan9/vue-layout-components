@@ -4,7 +4,7 @@
 			'show': show
 	     }"
 	>
-		<a v-if="logoUrl"
+		<a v-if="logoImage"
 		   :href="logoUrl"
 		   class="logo"
 		>
