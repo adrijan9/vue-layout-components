@@ -48,6 +48,7 @@ Vue.use(VueLayoutComponents);
 | sidebar-logo-url | Url for left sidebar logo link | String | '/' |
 | sidebar-logo-image | Image url for left sidebar logo | String | null |
 | close-on-esc | Close any sub menu item on pressing escape | Boolean | true |
+  
 ### Slots
 | Slot   |      Description      |
 |:----------:|:-------------:|
