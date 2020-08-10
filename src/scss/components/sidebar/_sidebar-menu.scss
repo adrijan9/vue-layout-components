@@ -3,7 +3,8 @@
 	display: none;
 	height: 100%;
 	min-width: $sidebarWidth;
-	transition: all .8s;
+	width: $sidebarWidth;
+	transition: all .6s;
 
 	&.show {
 		display: block;
@@ -26,12 +27,14 @@
 	}
 
 	.logo {
+		background-color: $sidebarDarker;
+		border-bottom: 1px solid $black;
 		display: block;
 		margin: auto;
-		padding: 5px;
-		text-align: center;
-		width: 75px;
+		padding: 10px;
 		position: relative;
+		text-align: center;
+		width: 100%;
 		z-index: 705;
 
 		img {
@@ -44,31 +47,52 @@
 			color: $white;
 			cursor: pointer;
 			display: block;
-			padding: 10px 5px;
+			padding: 0.5rem 0;
+			position: relative;
 			text-align: center;
 			text-decoration: none;
 			transition: .4s;
 			width: 100%;
-			position: relative;
 			z-index: 705;
 
 			&:hover,
 			&:focus,
 			&.active {
-				background-color: $sidebarLinkHover;
+				background-color: $sidebarLinkHoverActive;
 			}
+		}
+
+		&:first-of-type {
+			a {
+				padding: 1rem 0 0.5rem 0;
+			}
+		}
+
+		&:last-of-type {
+			a {
+				margin-bottom: 0;
+			}
+		}
+
+		&-title {
+			margin-top: 5px;
 		}
 	}
 
+	&-wrapper {
+		height: calc(100% - 90px);
+		overflow-y: auto;
+	}
+
 	&-submenu {
-		background: $sidebarLinkHover;
+		height: 100%;
 		left: -100%;
-		padding: 10px;
+		overflow-y: auto;
 		position: fixed;
 		top: 0;
 		transition: .8s;
 		width: calc(100% - 90px);
-		z-index: -1;
+		z-index: 1;
 
 		&.show {
 			left: $sidebarWidth !important;
@@ -83,10 +107,19 @@
 				left: -600px;
 				width: 600px;
 			}
+			&.half-screen {
+				left: -50%;
+				width: 50%;
+			}
 			&.full-screen {
 				left: -100%;
 				width: calc(100% - 90px);
 			}
+		}
+
+		&-wrapper {
+			background: $sidebarSubMenuBackgorund;
+			padding: 20px;
 		}
 
 		&-header {
@@ -99,9 +132,13 @@
 			h4 {
 				color: #fff;
 				display: block;
-				font-size: 2.2rem;
+				font-size: 1.5rem;
 				font-weight: 600;
 				margin: 0;
+
+				@media(min-width: $mobileScreenStart){
+					font-size: 2.2rem;
+				}
 			}
 
 			.close {
@@ -135,6 +172,30 @@
 
 				&:after {
 					transform: translate(-50%, -50%) rotate(-45deg);
+				}
+			}
+		}
+
+		&-body {
+			h2 {
+				margin: 25px 0 0 0;
+				color: #98918c;
+				font-size: 1rem;
+
+				@media(min-width: $mobileScreenStart){
+					font-size: 1.5rem;
+				}
+			}
+			a {
+				color: $white;
+				text-decoration: none;
+				transition: .4s;
+				opacity: .8;
+
+				&:hover,
+				&:focus,
+				&.active{
+					opacity: 1;
 				}
 			}
 		}
