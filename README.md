@@ -72,3 +72,9 @@ Vue.use(VueLayoutComponents);
 ## License
 
 This project is licensed under the terms of the [MIT license](LICENSE).
+
+## Browsers support
+
+| <img src="https://www.freepnglogos.com/uploads/internet-explorer-png-logo/file-internet-explorer-9-icon-svg--wikimedia-commons-10.png" alt="IE" width="24px" height="24px" /> <br/> IE | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="Edge" width="24px" height="24px" /></br> Edge | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" /></br>Firefox | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" /></br>Chrome | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" /></br>Safari | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari-ios/safari-ios_48x48.png" alt="iOS Safari" width="24px" height="24px" /></br>iOS Safari | <img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" /></br>Opera |
+|:---------:|:---------:|:---------:|:---------:|:---------:|:---------:|:---------:|
+| Not Tested| Yes | Yes | Not Tested | No Tested | No Tested | Yes
