@@ -43,7 +43,7 @@
 
 <script>
 	import "../scss/index.scss";
-	import SidebarMenu from "~src/components/Menu/SidebarMenu";
+	import SidebarMenu from "./Menu/SidebarMenu";
 	import debounce from "../utils/debounce";
 
 	export default {
