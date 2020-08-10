@@ -15,12 +15,7 @@
 		</a>
 		<div v-if="$slots.default"
 		     class="sidebar-menu-submenu"
-		     :class="[
-		     	{
-					'show': isOpen
-		        },
-		        submenuSize
-		     ]"
+		     :class="submenuSize"
 		>
 			<div class="sidebar-menu-submenu-wrapper">
 				<div class="sidebar-menu-submenu-header">
@@ -69,14 +64,10 @@
 				validator: function(value) {
 					return ["small", "medium", "half-screen", "full-screen"].indexOf(value) !== -1;
 				}
-			},
-			sidebarItems: {
-				type: Array
 			}
 		},
 		data: function(){
 			return {
-				isOpen: false,
 				id: this.$options.uuid(),
 				classes: {
 					sidebarMenuClass: ".sidebar-menu",
