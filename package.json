@@ -1,6 +1,6 @@
 {
   "name": "vue-layout-components",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Layout with small icons style sidebar and some other components.",
   "author": "Adrijan Mitrov",
   "license": "MIT",
@@ -16,7 +16,7 @@
     "type": "git",
     "url": "git+https://github.com/adrijan9/vue-layout-components.git"
   },
-  "homepage": "https://github.com/f3oall/awesome-notifications#readme",
+  "homepage": "https://github.com/adrijan9/vue-layout-components/blob/master/README.md",
   "keywords": [
     "vue",
     "layout",
