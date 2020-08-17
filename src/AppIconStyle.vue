@@ -2,7 +2,6 @@
 	<layout title="Dashboard"
 	        sidebar-logo-url="/"
 	        :sidebar-logo-image="require(`@/assets/images/vuelogo.png`)"
-	        type="basic"
 	>
 		<template #headerRight>
 			Add your components here
@@ -16,23 +15,7 @@
 					<img :src="require(`@/assets/images/expand.svg`)" />
 				</template>
 
-				<ul>
-					<li>
-						<a href="https://google.com">
-							Google
-						</a>
-					</li>
-					<li>
-						<a href="https://google.com">
-							Google
-						</a>
-					</li>
-					<li>
-						<a href="https://google.com">
-							Google
-						</a>
-					</li>
-				</ul>
+				<h2>Small sub heading</h2>
 			</sidebar-menu-item>
 			<sidebar-menu-item title="Medium"
 			                   icon="someIcon"
@@ -41,6 +24,8 @@
 				<template #icon>
 					<img :src="require(`@/assets/images/expand.svg`)" />
 				</template>
+
+				<h2>Medium sub heading</h2>
 			</sidebar-menu-item>
 			<sidebar-menu-item title="Half Screen"
 			                   icon="someIcon"
@@ -49,6 +34,8 @@
 				<template #icon>
 					<img :src="require(`@/assets/images/expand.svg`)" />
 				</template>
+
+				<h2>Half screen sub heading</h2>
 			</sidebar-menu-item>
 			<sidebar-menu-item title="Full screen"
 			                   icon="someIcon"
@@ -58,23 +45,7 @@
 					<img :src="require(`@/assets/images/expand.svg`)" />
 				</template>
 
-				<ul>
-					<li>
-						<a href="https://google.com">
-							<img :src="require(`@/assets/images/expand.svg`)" /> Google
-						</a>
-					</li>
-					<li>
-						<a href="https://google.com">
-							Google
-						</a>
-					</li>
-					<li>
-						<a href="https://google.com">
-							Google
-						</a>
-					</li>
-				</ul>
+				<h2>Full screen sub heading</h2>
 			</sidebar-menu-item>
 		</template>
 
