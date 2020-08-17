@@ -2,7 +2,7 @@
 [![npm](https://img.shields.io/npm/l/vue-layout-components.svg?style=for-the-badge)](LICENSE)
 
 # Vue Layout Components
-Simple two sides layout with small icon sidebar, header and body perfect for application.
+Simple two sides layout with small icon sidebar, header, and body perfect for application.
 
 # Installation
 
