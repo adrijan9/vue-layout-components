@@ -1,8 +1,11 @@
 <template>
-	<div class="layout">
+	<div class="layout"
+	     :class="type"
+	>
 		<sidebar-menu :show="isSidebarOpen"
 		              :logo-url="sidebarLogoUrl"
 		              :logo-image="sidebarLogoImage"
+		              :layout-type="type"
 		>
 			<slot name="sidebar"></slot>
 		</sidebar-menu>
@@ -38,12 +41,21 @@
 				<slot></slot>
 			</div>
 		</div>
+		<div v-if="type === 'basic'"
+		     class="overlay"
+		     :class="{
+				'show': isSidebarOpen
+		     }"
+		     @click="isSidebarOpen = false"
+		>
+			&nbsp;
+		</div>
 	</div>
 </template>
 
 <script>
 	import "../scss/index.scss";
-	import SidebarMenu from "~src/components/Menu/SidebarMenu";
+	import SidebarMenu from "./Menu/SidebarMenu";
 	import debounce from "../utils/debounce";
 
 	export default {
@@ -70,6 +82,16 @@
 			closeOnEsc: {
 				type: Boolean,
 				default: true
+			},
+			type: {
+				type: String,
+				default: null,
+				validator: function(value) {
+					if(value){
+						return ["basic"].indexOf(value) !== -1;
+					}
+					return true;
+				}
 			}
 		},
 		data: function(){
@@ -83,7 +105,8 @@
 			window.VueLayout = {
 				_stgs: {
 					_esc: _parent.closeOnEsc,
-					_brk: 992
+					_brk: 992,
+					_ltyp: _parent.type
 				}
 			};
 
