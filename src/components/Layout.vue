@@ -5,7 +5,6 @@
 		<sidebar-menu :show="isSidebarOpen"
 		              :logo-url="sidebarLogoUrl"
 		              :logo-image="sidebarLogoImage"
-		              :layout-type="type"
 		>
 			<slot name="sidebar"></slot>
 		</sidebar-menu>

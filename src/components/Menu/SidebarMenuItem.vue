@@ -2,23 +2,31 @@
 	<div class="sidebar-menu-item" :ref="id">
 		<a @click="openSidebarSumMenu"
 		   class="sidebar-menu-item-toggle"
+		   :class="{
+				'menu': isBasicLayout && $slots.default
+		   }"
 		>
-			<slot v-if="$slots.icon"
-			      name="icon"
-			></slot>
-			<i v-if="!$slots.icon && icon"
-			   :class="icon">
-			</i>
-			<div class="sidebar-menu-item-title">
-				{{ title }}
+			<div class="holder">
+				<slot v-if="$slots.icon"
+				      name="icon"
+				></slot>
+				<i v-if="!$slots.icon && icon"
+				   :class="icon">
+				</i>
+				<div class="sidebar-menu-item-title">
+					{{ title }}
+				</div>
 			</div>
+			<span class="arrow" v-if="isBasicLayout"></span>
 		</a>
 		<div v-if="$slots.default"
 		     class="sidebar-menu-submenu"
-		     :class="submenuSize"
+		     :class="getSubMenuStyle"
 		>
 			<div class="sidebar-menu-submenu-wrapper">
-				<div class="sidebar-menu-submenu-header">
+				<div v-if="!isBasicLayout"
+				     class="sidebar-menu-submenu-header"
+				>
 					<h4>
 						{{ title }}
 					</h4>
@@ -78,6 +86,14 @@
 				}
 			};
 		},
+		computed: {
+			isBasicLayout: function(){
+				return window.VueLayout._stgs._ltyp === 'basic';
+			},
+			getSubMenuStyle: function(){
+				return this.isBasicLayout ? "" : this.submenuSize;
+			}
+		},
 		methods: {
 			openSidebarSumMenu: function(){
 				const _parent = this;
@@ -99,17 +115,19 @@
 				let _parent = this;
 				return new Promise((resolve, reject) => {
 					try {
-						let menus = document.querySelectorAll(_parent.classes.sidebarSubMenuClass);
+						if(!_parent.isBasicLayout){
+							let menus = document.querySelectorAll(_parent.classes.sidebarSubMenuClass);
 
-						if(menus.length > 0) {
-							for(let i = 0; i < menus.length; i++){
-								let currentNode = menus[i],
-									menuItem = currentNode.parentNode,
-									link = menuItem.querySelector(_parent.classes.sidebarMenuItemToggleClass);
+							if(menus.length > 0) {
+								for(let i = 0; i < menus.length; i++){
+									let currentNode = menus[i],
+										menuItem = currentNode.parentNode,
+										link = menuItem.querySelector(_parent.classes.sidebarMenuItemToggleClass);
 
-								if(currentNode.classList.contains(_parent.classes.sidebarSumMenuShowClass)) {
-									currentNode.classList.remove(_parent.classes.sidebarSumMenuShowClass);
-									link.classList.remove(_parent.classes.sidebarMenuItemToggleActiveClass);
+									if(currentNode.classList.contains(_parent.classes.sidebarSumMenuShowClass)) {
+										currentNode.classList.remove(_parent.classes.sidebarSumMenuShowClass);
+										link.classList.remove(_parent.classes.sidebarMenuItemToggleActiveClass);
+									}
 								}
 							}
 						}
@@ -125,12 +143,24 @@
 					link = menuItem.querySelector(this.classes.sidebarMenuItemToggleClass),
 					submenu = menuItem.querySelector(this.classes.sidebarSubMenuClass);
 
-				if(open) {
-					submenu.classList.add(this.classes.sidebarSumMenuShowClass);
-					link.classList.add(this.classes.sidebarMenuItemToggleActiveClass);
-				}else {
-					submenu.classList.remove(this.classes.sidebarSumMenuShowClass);
-					link.classList.remove(this.classes.sidebarMenuItemToggleActiveClass);
+				if(submenu){
+					if(this.isBasicLayout){
+						if(!submenu.classList.contains(this.classes.sidebarSumMenuShowClass)) {
+							submenu.classList.add(this.classes.sidebarSumMenuShowClass);
+							link.classList.add(this.classes.sidebarMenuItemToggleActiveClass);
+						}else {
+							submenu.classList.remove(this.classes.sidebarSumMenuShowClass);
+							link.classList.remove(this.classes.sidebarMenuItemToggleActiveClass);
+						}
+					} else {
+						if(open) {
+							submenu.classList.add(this.classes.sidebarSumMenuShowClass);
+							link.classList.add(this.classes.sidebarMenuItemToggleActiveClass);
+						}else {
+							submenu.classList.remove(this.classes.sidebarSumMenuShowClass);
+							link.classList.remove(this.classes.sidebarMenuItemToggleActiveClass);
+						}
+					}
 				}
 			}
 		},

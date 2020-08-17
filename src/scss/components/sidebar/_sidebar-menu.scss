@@ -60,6 +60,17 @@
 			&.active {
 				background-color: $sidebarLinkHoverActive;
 			}
+
+			.holder {
+				display: flex;
+				align-items: center;
+				flex-wrap: wrap;
+				justify-content: center;
+
+				div {
+					width: 100%;
+				}
+			}
 		}
 
 		&:first-of-type {
