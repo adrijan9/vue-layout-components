@@ -2,7 +2,6 @@
 	<layout title="Dashboard"
 	        sidebar-logo-url="/"
 	        :sidebar-logo-image="require(`@/assets/images/vuelogo.png`)"
-	        type="basic"
 	>
 		<template #headerRight>
 			Add your components here

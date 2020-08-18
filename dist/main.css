@@ -95,6 +95,116 @@ body {
     @media (min-width: 992px) {
       .layout-body {
         height: calc(100% - 55px); } }
+  .layout.basic .sidebar-menu {
+    display: block;
+    left: -250px;
+    min-width: 250px;
+    position: fixed;
+    width: 250px;
+    z-index: 1; }
+    .layout.basic .sidebar-menu:before {
+      content: unset; }
+    .layout.basic .sidebar-menu.show {
+      display: unset;
+      left: 0; }
+    @media (min-width: 992px) {
+      .layout.basic .sidebar-menu {
+        left: 0; } }
+    .layout.basic .sidebar-menu .logo img {
+      width: auto; }
+    .layout.basic .sidebar-menu-item:first-of-type a {
+      padding: 1rem; }
+    .layout.basic .sidebar-menu-item > a {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem; }
+      .layout.basic .sidebar-menu-item > a .holder {
+        flex-wrap: unset;
+        justify-content: unset; }
+    .layout.basic .sidebar-menu-item-title {
+      margin-left: 0.5rem;
+      margin-top: 0; }
+    .layout.basic .sidebar-menu-item-toggle.menu .arrow {
+      -webkit-transform: rotate(45deg);
+      -webkit-transition: 0.4s ease;
+      bottom: -5px;
+      display: inline-block;
+      float: right;
+      height: 13px;
+      left: -10px;
+      margin-top: 2px;
+      position: relative;
+      text-align: left;
+      transform: rotate(45deg);
+      transition: 0.4s ease;
+      width: 13px; }
+      .layout.basic .sidebar-menu-item-toggle.menu .arrow:after, .layout.basic .sidebar-menu-item-toggle.menu .arrow:before {
+        -webkit-transition: 0.4s ease;
+        background-color: #fff;
+        content: "";
+        display: inline-block;
+        height: 3px;
+        position: absolute;
+        transition: 0.4s ease;
+        width: 12px; }
+      .layout.basic .sidebar-menu-item-toggle.menu .arrow:after {
+        -webkit-transform: rotate(90deg);
+        left: 5px;
+        position: absolute;
+        top: -5px;
+        transform: rotate(90deg); }
+    .layout.basic .sidebar-menu-item-toggle.menu.active .arrow {
+      transform: rotate(45deg) translate(-5px, -5px); }
+      .layout.basic .sidebar-menu-item-toggle.menu.active .arrow:before {
+        transform: translate(10px, 0); }
+      .layout.basic .sidebar-menu-item-toggle.menu.active .arrow:after {
+        transform: rotate(90deg) translate(10px, 0); }
+    .layout.basic .sidebar-menu-submenu {
+      height: 0;
+      position: unset;
+      width: 100%; }
+      .layout.basic .sidebar-menu-submenu.show {
+        height: auto;
+        left: unset; }
+      .layout.basic .sidebar-menu-submenu-wrapper {
+        padding: 0; }
+      .layout.basic .sidebar-menu-submenu-body ul {
+        list-style: none;
+        margin: 0;
+        padding: 0; }
+        .layout.basic .sidebar-menu-submenu-body ul li {
+          display: flex; }
+          .layout.basic .sidebar-menu-submenu-body ul li a {
+            padding: 0.75rem 1rem 0.75rem 1.5rem !important;
+            width: 100%;
+            transition: all .4s;
+            display: flex;
+            align-items: center; }
+            .layout.basic .sidebar-menu-submenu-body ul li a:focus, .layout.basic .sidebar-menu-submenu-body ul li a:hover {
+              background-color: #535353; }
+            .layout.basic .sidebar-menu-submenu-body ul li a img,
+            .layout.basic .sidebar-menu-submenu-body ul li a i {
+              margin-right: 0.5rem; }
+          .layout.basic .sidebar-menu-submenu-body ul li.active a {
+            background-color: #535353; }
+  .layout.basic .layout-content {
+    width: 100%; }
+    @media (min-width: 992px) {
+      .layout.basic .layout-content {
+        width: calc(100% - 250px);
+        margin-left: 250px; } }
+  .layout.basic .overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    left: 0;
+    top: 0;
+    z-index: 0; }
+    .layout.basic .overlay.show {
+      display: block; }
 
 .sidebar-menu {
   background-color: #2d2d2d;
@@ -143,6 +253,13 @@ body {
     z-index: 705; }
     .sidebar-menu-item > a:hover, .sidebar-menu-item > a:focus, .sidebar-menu-item > a.active {
       background-color: #535353; }
+    .sidebar-menu-item > a .holder {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center; }
+      .sidebar-menu-item > a .holder div {
+        width: 100%; }
   .sidebar-menu-item:first-of-type a {
     padding: 1rem 0 0.5rem 0; }
   .sidebar-menu-item:last-of-type a {

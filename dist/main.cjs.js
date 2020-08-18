@@ -47,6 +47,17 @@ var script = {
     closeOnEsc: {
       type: Boolean,
       default: true
+    },
+    type: {
+      type: String,
+      default: null,
+      validator: function validator(value) {
+        if (value) {
+          return ["basic"].indexOf(value) !== -1;
+        }
+
+        return true;
+      }
     }
   },
   data: function data() {
@@ -60,7 +71,8 @@ var script = {
     window.VueLayout = {
       _stgs: {
         _esc: _parent.closeOnEsc,
-        _brk: 992
+        _brk: 992,
+        _ltyp: _parent.type
       }
     };
     window.addEventListener("resize", debounce(function (event) {
@@ -160,9 +172,11 @@ var normalizeComponent_1 = normalizeComponent;
 const __vue_script__ = script;
 
 /* template */
-var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"layout"},[_c('sidebar-menu',{attrs:{"show":_vm.isSidebarOpen,"logo-url":_vm.sidebarLogoUrl,"logo-image":_vm.sidebarLogoImage}},[_vm._t("sidebar")],2),_vm._v(" "),_c('div',{staticClass:"layout-content"},[_c('div',{staticClass:"layout-header",class:{
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"layout",class:_vm.type},[_c('sidebar-menu',{attrs:{"show":_vm.isSidebarOpen,"logo-url":_vm.sidebarLogoUrl,"logo-image":_vm.sidebarLogoImage}},[_vm._t("sidebar")],2),_vm._v(" "),_c('div',{staticClass:"layout-content"},[_c('div',{staticClass:"layout-header",class:{
 				'active': _vm.isSidebarOpen
-		     }},[_c('button',{staticClass:"layout-header-toggle",on:{"click":function($event){_vm.isSidebarOpen = !_vm.isSidebarOpen;}}},[_c('span',{attrs:{"aria-hidden":"true"}})]),_vm._v(" "),_c('div',{staticClass:"layout-header-holder"},[_c('div',{staticClass:"layout-header-left"},[(_vm.$slots.headerLeft)?_vm._t("headerLeft"):_vm._e(),_vm._v(" "),(!_vm.$slots.headerLeft && _vm.title)?_c('h3',{staticClass:"layout-header-title"},[(_vm.icon)?_c('i',{class:_vm.icon}):_vm._e(),_vm._v("\n\t\t\t\t\t\t"+_vm._s(_vm.title)+"\n\t\t\t\t\t")]):_vm._e()],2),_vm._v(" "),(_vm.$slots.headerRight)?_c('div',{staticClass:"layout-header-right"},[_vm._t("headerRight")],2):_vm._e()])]),_vm._v(" "),_c('div',{staticClass:"layout-body"},[_vm._t("default")],2)])],1)};
+		     }},[_c('button',{staticClass:"layout-header-toggle",on:{"click":function($event){_vm.isSidebarOpen = !_vm.isSidebarOpen;}}},[_c('span',{attrs:{"aria-hidden":"true"}})]),_vm._v(" "),_c('div',{staticClass:"layout-header-holder"},[_c('div',{staticClass:"layout-header-left"},[(_vm.$slots.headerLeft)?_vm._t("headerLeft"):_vm._e(),_vm._v(" "),(!_vm.$slots.headerLeft && _vm.title)?_c('h3',{staticClass:"layout-header-title"},[(_vm.icon)?_c('i',{class:_vm.icon}):_vm._e(),_vm._v("\n\t\t\t\t\t\t"+_vm._s(_vm.title)+"\n\t\t\t\t\t")]):_vm._e()],2),_vm._v(" "),(_vm.$slots.headerRight)?_c('div',{staticClass:"layout-header-right"},[_vm._t("headerRight")],2):_vm._e()])]),_vm._v(" "),_c('div',{staticClass:"layout-body"},[_vm._t("default")],2)]),_vm._v(" "),(_vm.type === 'basic')?_c('div',{staticClass:"overlay",class:{
+			'show': _vm.isSidebarOpen
+	     },on:{"click":function($event){_vm.isSidebarOpen = false;}}},[_vm._v("\n\t\t \n\t")]):_vm._e()],1)};
 var __vue_staticRenderFns__ = [];
 
   /* style */
@@ -311,6 +325,14 @@ var script$2 = {
       }
     };
   },
+  computed: {
+    isBasicLayout: function isBasicLayout() {
+      return window.VueLayout._stgs._ltyp === 'basic';
+    },
+    getSubMenuStyle: function getSubMenuStyle() {
+      return this.isBasicLayout ? "" : this.submenuSize;
+    }
+  },
   methods: {
     openSidebarSumMenu: function openSidebarSumMenu() {
       var _parent = this;
@@ -332,17 +354,19 @@ var script$2 = {
 
       return new Promise(function (resolve, reject) {
         try {
-          var menus = document.querySelectorAll(_parent.classes.sidebarSubMenuClass);
+          if (!_parent.isBasicLayout) {
+            var menus = document.querySelectorAll(_parent.classes.sidebarSubMenuClass);
 
-          if (menus.length > 0) {
-            for (var i = 0; i < menus.length; i++) {
-              var currentNode = menus[i],
-                  menuItem = currentNode.parentNode,
-                  link = menuItem.querySelector(_parent.classes.sidebarMenuItemToggleClass);
+            if (menus.length > 0) {
+              for (var i = 0; i < menus.length; i++) {
+                var currentNode = menus[i],
+                    menuItem = currentNode.parentNode,
+                    link = menuItem.querySelector(_parent.classes.sidebarMenuItemToggleClass);
 
-              if (currentNode.classList.contains(_parent.classes.sidebarSumMenuShowClass)) {
-                currentNode.classList.remove(_parent.classes.sidebarSumMenuShowClass);
-                link.classList.remove(_parent.classes.sidebarMenuItemToggleActiveClass);
+                if (currentNode.classList.contains(_parent.classes.sidebarSumMenuShowClass)) {
+                  currentNode.classList.remove(_parent.classes.sidebarSumMenuShowClass);
+                  link.classList.remove(_parent.classes.sidebarMenuItemToggleActiveClass);
+                }
               }
             }
           }
@@ -358,12 +382,24 @@ var script$2 = {
           link = menuItem.querySelector(this.classes.sidebarMenuItemToggleClass),
           submenu = menuItem.querySelector(this.classes.sidebarSubMenuClass);
 
-      if (open) {
-        submenu.classList.add(this.classes.sidebarSumMenuShowClass);
-        link.classList.add(this.classes.sidebarMenuItemToggleActiveClass);
-      } else {
-        submenu.classList.remove(this.classes.sidebarSumMenuShowClass);
-        link.classList.remove(this.classes.sidebarMenuItemToggleActiveClass);
+      if (submenu) {
+        if (this.isBasicLayout) {
+          if (!submenu.classList.contains(this.classes.sidebarSumMenuShowClass)) {
+            submenu.classList.add(this.classes.sidebarSumMenuShowClass);
+            link.classList.add(this.classes.sidebarMenuItemToggleActiveClass);
+          } else {
+            submenu.classList.remove(this.classes.sidebarSumMenuShowClass);
+            link.classList.remove(this.classes.sidebarMenuItemToggleActiveClass);
+          }
+        } else {
+          if (open) {
+            submenu.classList.add(this.classes.sidebarSumMenuShowClass);
+            link.classList.add(this.classes.sidebarMenuItemToggleActiveClass);
+          } else {
+            submenu.classList.remove(this.classes.sidebarSumMenuShowClass);
+            link.classList.remove(this.classes.sidebarMenuItemToggleActiveClass);
+          }
+        }
       }
     }
   },
@@ -394,7 +430,9 @@ var script$2 = {
 const __vue_script__$2 = script$2;
 
 /* template */
-var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:_vm.id,staticClass:"sidebar-menu-item"},[_c('a',{staticClass:"sidebar-menu-item-toggle",on:{"click":_vm.openSidebarSumMenu}},[(_vm.$slots.icon)?_vm._t("icon"):_vm._e(),_vm._v(" "),(!_vm.$slots.icon && _vm.icon)?_c('i',{class:_vm.icon}):_vm._e(),_vm._v(" "),_c('div',{staticClass:"sidebar-menu-item-title"},[_vm._v("\n\t\t\t"+_vm._s(_vm.title)+"\n\t\t")])],2),_vm._v(" "),(_vm.$slots.default)?_c('div',{staticClass:"sidebar-menu-submenu",class:_vm.submenuSize},[_c('div',{staticClass:"sidebar-menu-submenu-wrapper"},[_c('div',{staticClass:"sidebar-menu-submenu-header"},[_c('h4',[_vm._v("\n\t\t\t\t\t"+_vm._s(_vm.title)+"\n\t\t\t\t")]),_vm._v(" "),_c('button',{staticClass:"close",on:{"click":function($event){return _vm.openCloseSidebar(false)}}})]),_vm._v(" "),_c('div',{staticClass:"sidebar-menu-submenu-body"},[_vm._t("default")],2)])]):_vm._e()])};
+var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:_vm.id,staticClass:"sidebar-menu-item"},[_c('a',{staticClass:"sidebar-menu-item-toggle",class:{
+			'menu': _vm.isBasicLayout && _vm.$slots.default
+	   },on:{"click":_vm.openSidebarSumMenu}},[_c('div',{staticClass:"holder"},[(_vm.$slots.icon)?_vm._t("icon"):_vm._e(),_vm._v(" "),(!_vm.$slots.icon && _vm.icon)?_c('i',{class:_vm.icon}):_vm._e(),_vm._v(" "),_c('div',{staticClass:"sidebar-menu-item-title"},[_vm._v("\n\t\t\t\t"+_vm._s(_vm.title)+"\n\t\t\t")])],2),_vm._v(" "),(_vm.isBasicLayout)?_c('span',{staticClass:"arrow"}):_vm._e()]),_vm._v(" "),(_vm.$slots.default)?_c('div',{staticClass:"sidebar-menu-submenu",class:_vm.getSubMenuStyle},[_c('div',{staticClass:"sidebar-menu-submenu-wrapper"},[(!_vm.isBasicLayout)?_c('div',{staticClass:"sidebar-menu-submenu-header"},[_c('h4',[_vm._v("\n\t\t\t\t\t"+_vm._s(_vm.title)+"\n\t\t\t\t")]),_vm._v(" "),_c('button',{staticClass:"close",on:{"click":function($event){return _vm.openCloseSidebar(false)}}})]):_vm._e(),_vm._v(" "),_c('div',{staticClass:"sidebar-menu-submenu-body"},[_vm._t("default")],2)])]):_vm._e()])};
 var __vue_staticRenderFns__$2 = [];
 
   /* style */
