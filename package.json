@@ -1,6 +1,6 @@
 {
   "name": "vue-layout-components",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Layout with small icons style sidebar and some other components.",
   "author": "Adrijan Mitrov",
   "license": "MIT",
@@ -33,7 +33,8 @@
   ],
   "scripts": {
     "serve": "vue serve ./src/App.vue",
-    "build": "npm run build:unpkg & npm run build:es & npm run build:umd & npm run compile-styles & npm run css-minify",
+    "build": "npm run build:unpkg & npm run build:es & npm run build:umd & npm run build:cjs & npm run compile-styles & npm run css-minify",
+    "build:cjs": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format cjs --file dist/main.js",
     "build:umd": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format umd --file dist/main.umd.js",
     "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format es --file dist/main.esm.js",
     "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife --file dist/main.min.js",
