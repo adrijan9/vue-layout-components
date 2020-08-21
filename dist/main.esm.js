@@ -1,86 +1,80 @@
-'use strict';
-
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
-var SidebarMenu = _interopDefault(require('~/src/components/Menu/SidebarMenu'));
+import SidebarMenu$1 from '~/src/components/Menu/SidebarMenu';
 
 function debounce (func, wait, immediate) {
-  var timeout;
-  return function () {
-    var context = this,
-        args = arguments;
-
-    var later = function later() {
-      timeout = null;
-      if (!immediate) func.apply(context, args);
-    };
-
-    var callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-    if (callNow) func.apply(context, args);
-  };
+	var timeout;
+	return function() {
+		var context = this, args = arguments;
+		var later = function() {
+			timeout = null;
+			if (!immediate) { func.apply(context, args); }
+		};
+		var callNow = immediate && !timeout;
+		clearTimeout(timeout);
+		timeout = setTimeout(later, wait);
+		if (callNow) { func.apply(context, args); }
+	};
 }
 
 //
+
 var script = {
-  components: {
-    SidebarMenu: SidebarMenu
-  },
-  props: {
-    title: {
-      type: String,
-      default: null
-    },
-    icon: {
-      type: String,
-      default: null
-    },
-    sidebarLogoUrl: {
-      type: String,
-      default: "/"
-    },
-    sidebarLogoImage: {
-      type: String,
-      default: null
-    },
-    closeOnEsc: {
-      type: Boolean,
-      default: true
-    },
-    type: {
-      type: String,
-      default: null,
-      validator: function validator(value) {
-        if (value) {
-          return ["basic"].indexOf(value) !== -1;
-        }
+	components: {
+		SidebarMenu: SidebarMenu$1
+	},
+	props: {
+		title: {
+			type: String,
+			default: null
+		},
+		icon: {
+			type: String,
+			default: null
+		},
+		sidebarLogoUrl: {
+			type: String,
+			default: "/"
+		},
+		sidebarLogoImage: {
+			type: String,
+			default: null
+		},
+		closeOnEsc: {
+			type: Boolean,
+			default: true
+		},
+		type: {
+			type: String,
+			default: null,
+			validator: function(value) {
+				if(value){
+					return ["basic"].indexOf(value) !== -1;
+				}
+				return true;
+			}
+		}
+	},
+	data: function(){
+		return {
+			isSidebarOpen: false
+		};
+	},
+	created: function(){
+		var _parent = this;
 
-        return true;
-      }
-    }
-  },
-  data: function data() {
-    return {
-      isSidebarOpen: false
-    };
-  },
-  created: function created() {
-    var _parent = this;
+		window.VueLayout = {
+			_stgs: {
+				_esc: _parent.closeOnEsc,
+				_brk: 992,
+				_ltyp: _parent.type
+			}
+		};
 
-    window.VueLayout = {
-      _stgs: {
-        _esc: _parent.closeOnEsc,
-        _brk: 992,
-        _ltyp: _parent.type
-      }
-    };
-    window.addEventListener("resize", debounce(function (event) {
-      if (event.target.innerWidth >= window.VueLayout._stgs._brk) {
-        _parent.isSidebarOpen = false;
-      }
-    }, 500));
-  }
+		window.addEventListener("resize", debounce(function(event){
+			if(event.target.innerWidth >= window.VueLayout._stgs._brk) {
+				_parent.isSidebarOpen = false;
+			}
+		}, 500));
+	}
 };
 
 function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier
@@ -169,7 +163,7 @@ function normalizeComponent(template, style, script, scopeId, isFunctionalTempla
 var normalizeComponent_1 = normalizeComponent;
 
 /* script */
-const __vue_script__ = script;
+var __vue_script__ = script;
 
 /* template */
 var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"layout",class:_vm.type},[_c('sidebar-menu',{attrs:{"show":_vm.isSidebarOpen,"logo-url":_vm.sidebarLogoUrl,"logo-image":_vm.sidebarLogoImage}},[_vm._t("sidebar")],2),_vm._v(" "),_c('div',{staticClass:"layout-content"},[_c('div',{staticClass:"layout-header",class:{
@@ -180,13 +174,13 @@ var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=
 var __vue_staticRenderFns__ = [];
 
   /* style */
-  const __vue_inject_styles__ = undefined;
+  var __vue_inject_styles__ = undefined;
   /* scoped */
-  const __vue_scope_id__ = undefined;
+  var __vue_scope_id__ = undefined;
   /* module identifier */
-  const __vue_module_identifier__ = undefined;
+  var __vue_module_identifier__ = undefined;
   /* functional template */
-  const __vue_is_functional_template__ = false;
+  var __vue_is_functional_template__ = false;
   /* style inject */
   
   /* style inject SSR */
@@ -224,26 +218,27 @@ var __vue_staticRenderFns__ = [];
 //
 //
 //
+
 var script$1 = {
-  name: "sidebar-menu",
-  props: {
-    show: {
-      type: Boolean,
-      default: false
-    },
-    logoUrl: {
-      type: String,
-      default: null
-    },
-    logoImage: {
-      type: String,
-      default: null
-    }
-  }
+	name: "sidebar-menu",
+	props: {
+		show: {
+			type: Boolean,
+			default: false
+		},
+		logoUrl: {
+			type: String,
+			default: null
+		},
+		logoImage: {
+			type: String,
+			default: null
+		}
+	}
 };
 
 /* script */
-const __vue_script__$1 = script$1;
+var __vue_script__$1 = script$1;
 
 /* template */
 var __vue_render__$1 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"sidebar-menu",class:{
@@ -252,20 +247,20 @@ var __vue_render__$1 = function () {var _vm=this;var _h=_vm.$createElement;var _
 var __vue_staticRenderFns__$1 = [];
 
   /* style */
-  const __vue_inject_styles__$1 = undefined;
+  var __vue_inject_styles__$1 = undefined;
   /* scoped */
-  const __vue_scope_id__$1 = undefined;
+  var __vue_scope_id__$1 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$1 = undefined;
+  var __vue_module_identifier__$1 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$1 = false;
+  var __vue_is_functional_template__$1 = false;
   /* style inject */
   
   /* style inject SSR */
   
 
   
-  var SidebarMenu$1 = normalizeComponent_1(
+  var SidebarMenu = normalizeComponent_1(
     { render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 },
     __vue_inject_styles__$1,
     __vue_script__$1,
@@ -277,157 +272,156 @@ var __vue_staticRenderFns__$1 = [];
   );
 
 function uuid () {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-    var r = Math.random() * 16 | 0,
-        v = c === 'x' ? r : r & 0x3 | 0x8;
-    return v.toString(16);
-  });
+	return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+		var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+		return v.toString(16);
+	});
 }
 
 //
+
 var script$2 = {
-  name: "sidebar-menu-item",
-  uuid: uuid,
-  props: {
-    title: {
-      type: String,
-      required: true
-    },
-    icon: {
-      type: String,
-      default: null
-    },
-    href: {
-      type: String,
-      default: null
-    },
-    to: {
-      type: String,
-      default: null
-    },
-    submenuSize: {
-      type: String,
-      default: "small",
-      validator: function validator(value) {
-        return ["small", "medium", "half-screen", "full-screen"].indexOf(value) !== -1;
-      }
-    }
-  },
-  data: function data() {
-    return {
-      id: this.$options.uuid(),
-      classes: {
-        sidebarMenuClass: ".sidebar-menu",
-        sidebarSubMenuClass: ".sidebar-menu-submenu",
-        sidebarMenuItemToggleClass: ".sidebar-menu-item-toggle",
-        sidebarSumMenuShowClass: "show",
-        sidebarMenuItemToggleActiveClass: "active"
-      }
-    };
-  },
-  computed: {
-    isBasicLayout: function isBasicLayout() {
-      return window.VueLayout._stgs._ltyp === 'basic';
-    },
-    getSubMenuStyle: function getSubMenuStyle() {
-      return this.isBasicLayout ? "" : this.submenuSize;
-    }
-  },
-  methods: {
-    openSidebarSumMenu: function openSidebarSumMenu() {
-      var _parent = this;
+	name: "sidebar-menu-item",
+	uuid: uuid,
+	props: {
+		title: {
+			type: String,
+			required: true
+		},
+		icon: {
+			type: String,
+			default: null
+		},
+		href: {
+			type: String,
+			default: null
+		},
+		to: {
+			type: String,
+			default: null
+		},
+		submenuSize: {
+			type: String,
+			default: "small",
+			validator: function(value) {
+				return ["small", "medium", "half-screen", "full-screen"].indexOf(value) !== -1;
+			}
+		}
+	},
+	data: function(){
+		return {
+			id: this.$options.uuid(),
+			classes: {
+				sidebarMenuClass: ".sidebar-menu",
+				sidebarSubMenuClass: ".sidebar-menu-submenu",
+				sidebarMenuItemToggleClass: ".sidebar-menu-item-toggle",
+				sidebarSumMenuShowClass: "show",
+				sidebarMenuItemToggleActiveClass: "active"
+			}
+		};
+	},
+	computed: {
+		isBasicLayout: function(){
+			return window.VueLayout._stgs._ltyp === 'basic';
+		},
+		getSubMenuStyle: function(){
+			return this.isBasicLayout ? "" : this.submenuSize;
+		}
+	},
+	methods: {
+		openSidebarSumMenu: function(){
+			var _parent = this;
 
-      if (_parent.to) {
-        _parent.$router.push(_parent.to);
-      } else {
-        if (_parent.href) {
-          window.location.href = _parent.href;
-        } else {
-          this.closeOtherMenus().then(function () {
-            _parent.openCloseSidebar(true);
-          });
-        }
-      }
-    },
-    closeOtherMenus: function closeOtherMenus() {
-      var _parent = this;
+			if(_parent.to) {
+				_parent.$router.push(_parent.to);
+			}else {
+				if(_parent.href) {
+					window.location.href = _parent.href;
+				}else {
+					this.closeOtherMenus()
+						.then(function () {
+							_parent.openCloseSidebar(true);
+						});
+				}
+			}
+		},
+		closeOtherMenus: function(){
+			var _parent = this;
+			return new Promise(function (resolve, reject) {
+				try {
+					if(!_parent.isBasicLayout){
+						var menus = document.querySelectorAll(_parent.classes.sidebarSubMenuClass);
 
-      return new Promise(function (resolve, reject) {
-        try {
-          if (!_parent.isBasicLayout) {
-            var menus = document.querySelectorAll(_parent.classes.sidebarSubMenuClass);
+						if(menus.length > 0) {
+							for(var i = 0; i < menus.length; i++){
+								var currentNode = menus[i],
+									menuItem = currentNode.parentNode,
+									link = menuItem.querySelector(_parent.classes.sidebarMenuItemToggleClass);
 
-            if (menus.length > 0) {
-              for (var i = 0; i < menus.length; i++) {
-                var currentNode = menus[i],
-                    menuItem = currentNode.parentNode,
-                    link = menuItem.querySelector(_parent.classes.sidebarMenuItemToggleClass);
+								if(currentNode.classList.contains(_parent.classes.sidebarSumMenuShowClass)) {
+									currentNode.classList.remove(_parent.classes.sidebarSumMenuShowClass);
+									link.classList.remove(_parent.classes.sidebarMenuItemToggleActiveClass);
+								}
+							}
+						}
+					}
 
-                if (currentNode.classList.contains(_parent.classes.sidebarSumMenuShowClass)) {
-                  currentNode.classList.remove(_parent.classes.sidebarSumMenuShowClass);
-                  link.classList.remove(_parent.classes.sidebarMenuItemToggleActiveClass);
-                }
-              }
-            }
-          }
+					resolve();
+				} catch (error) {
+					reject(error);
+				}
+			});
+		},
+		openCloseSidebar: function(open){
+			var menuItem = this.$refs[this.id],
+				link = menuItem.querySelector(this.classes.sidebarMenuItemToggleClass),
+				submenu = menuItem.querySelector(this.classes.sidebarSubMenuClass);
 
-          resolve();
-        } catch (error) {
-          reject(error);
-        }
-      });
-    },
-    openCloseSidebar: function openCloseSidebar(open) {
-      var menuItem = this.$refs[this.id],
-          link = menuItem.querySelector(this.classes.sidebarMenuItemToggleClass),
-          submenu = menuItem.querySelector(this.classes.sidebarSubMenuClass);
+			if(submenu){
+				if(this.isBasicLayout){
+					if(!submenu.classList.contains(this.classes.sidebarSumMenuShowClass)) {
+						submenu.classList.add(this.classes.sidebarSumMenuShowClass);
+						link.classList.add(this.classes.sidebarMenuItemToggleActiveClass);
+					}else {
+						submenu.classList.remove(this.classes.sidebarSumMenuShowClass);
+						link.classList.remove(this.classes.sidebarMenuItemToggleActiveClass);
+					}
+				} else {
+					if(open) {
+						submenu.classList.add(this.classes.sidebarSumMenuShowClass);
+						link.classList.add(this.classes.sidebarMenuItemToggleActiveClass);
+					}else {
+						submenu.classList.remove(this.classes.sidebarSumMenuShowClass);
+						link.classList.remove(this.classes.sidebarMenuItemToggleActiveClass);
+					}
+				}
+			}
+		}
+	},
+	mounted: function(){
+		var _parent = this;
 
-      if (submenu) {
-        if (this.isBasicLayout) {
-          if (!submenu.classList.contains(this.classes.sidebarSumMenuShowClass)) {
-            submenu.classList.add(this.classes.sidebarSumMenuShowClass);
-            link.classList.add(this.classes.sidebarMenuItemToggleActiveClass);
-          } else {
-            submenu.classList.remove(this.classes.sidebarSumMenuShowClass);
-            link.classList.remove(this.classes.sidebarMenuItemToggleActiveClass);
-          }
-        } else {
-          if (open) {
-            submenu.classList.add(this.classes.sidebarSumMenuShowClass);
-            link.classList.add(this.classes.sidebarMenuItemToggleActiveClass);
-          } else {
-            submenu.classList.remove(this.classes.sidebarSumMenuShowClass);
-            link.classList.remove(this.classes.sidebarMenuItemToggleActiveClass);
-          }
-        }
-      }
-    }
-  },
-  mounted: function mounted() {
-    var _parent = this;
+		window.addEventListener("resize", debounce(function(event){
+			var sidebarMenu = document.querySelector(_parent.classes.sidebarMenuClass);
 
-    window.addEventListener("resize", debounce(function (event) {
-      var sidebarMenu = document.querySelector(_parent.classes.sidebarMenuClass);
-
-      if (event.target.innerWidth >= window.VueLayout._stgs._brk) {
-        if (sidebarMenu.classList.contains(_parent.classes.sidebarSumMenuShowClass)) {
-          sidebarMenu.classList.remove(_parent.classes.sidebarSumMenuShowClass);
-        }
-      } else {
-        _parent.closeOtherMenus();
-      }
-    }, 500));
-
-    if (window.VueLayout._stgs._esc) {
-      window.addEventListener("keyup", function (event) {
-        _parent.closeOtherMenus();
-      });
-    }
-  }
+			if(event.target.innerWidth >= window.VueLayout._stgs._brk) {
+				if(sidebarMenu.classList.contains(_parent.classes.sidebarSumMenuShowClass)) {
+					sidebarMenu.classList.remove(_parent.classes.sidebarSumMenuShowClass);
+				}
+			}else {
+				_parent.closeOtherMenus();
+			}
+		}, 500));
+		if(window.VueLayout._stgs._esc) {
+			window.addEventListener("keyup", function(event){
+				_parent.closeOtherMenus();
+			});
+		}
+	}
 };
 
 /* script */
-const __vue_script__$2 = script$2;
+var __vue_script__$2 = script$2;
 
 /* template */
 var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:_vm.id,staticClass:"sidebar-menu-item"},[_c('a',{staticClass:"sidebar-menu-item-toggle",class:{
@@ -436,13 +430,13 @@ var __vue_render__$2 = function () {var _vm=this;var _h=_vm.$createElement;var _
 var __vue_staticRenderFns__$2 = [];
 
   /* style */
-  const __vue_inject_styles__$2 = undefined;
+  var __vue_inject_styles__$2 = undefined;
   /* scoped */
-  const __vue_scope_id__$2 = undefined;
+  var __vue_scope_id__$2 = undefined;
   /* module identifier */
-  const __vue_module_identifier__$2 = undefined;
+  var __vue_module_identifier__$2 = undefined;
   /* functional template */
-  const __vue_is_functional_template__$2 = false;
+  var __vue_is_functional_template__$2 = false;
   /* style inject */
   
   /* style inject SSR */
@@ -460,12 +454,12 @@ var __vue_staticRenderFns__$2 = [];
     undefined
   );
 
-var index = {
+var main = {
   install: function install(Vue, options) {
     Vue.component("layout", Layout);
-    Vue.component("sidebar-menu", SidebarMenu$1);
+    Vue.component("sidebar-menu", SidebarMenu);
     Vue.component("sidebar-menu-item", SidebarMenuItem);
   }
 };
 
-module.exports = index;
+export default main;

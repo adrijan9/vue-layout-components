@@ -54,6 +54,7 @@
 </template>
 
 <script>
+	import "../dist/vue-layout-components.css";
 	import Layout from "./components/Layout";
 	import SidebarMenuItem from "./components/Menu/SidebarMenuItem";
 
