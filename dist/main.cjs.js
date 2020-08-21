@@ -2,7 +2,7 @@
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var SidebarMenu = _interopDefault(require('~src/components/Menu/SidebarMenu'));
+var SidebarMenu = _interopDefault(require('~/src/components/Menu/SidebarMenu'));
 
 function debounce (func, wait, immediate) {
   var timeout;
