@@ -1,6 +1,6 @@
 {
   "name": "vue-layout-components",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Layout with small icons style sidebar and some other components.",
   "author": "Adrijan Mitrov",
   "license": "MIT",
@@ -42,18 +42,19 @@
     "css-minify": "cleancss --level 1 --format breaksWith=lf --source-map --source-map-inline-sources --output dist/vue-layout-components.min.css dist/vue-layout-components.css"
   },
   "devDependencies": {
+    "clean-css-cli": "^4.3.0",
     "cross-env": "^5.2.0",
     "minimist": "^1.2.0",
     "node-sass": "^4.14.1",
     "rollup": "^1.14.4",
     "rollup-plugin-buble": "^0.19.6",
     "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-replace": "^2.2.0",
     "rollup-plugin-scss": "^2.6.0",
     "rollup-plugin-uglify-es": "0.0.1",
     "rollup-plugin-vue": "^4.7.2",
     "vue": "^2.6.10",
-    "vue-template-compiler": "^2.6.10",
-    "clean-css-cli": "^4.3.0"
+    "vue-template-compiler": "^2.6.10"
   }
 }

@@ -1,85 +1,45 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('~/src/components/Menu/SidebarMenu')) :
-	typeof define === 'function' && define.amd ? define(['~/src/components/Menu/SidebarMenu'], factory) :
-	(global = global || self, global.VueLayoutComponents = factory(global.SidebarMenu$1));
-}(this, function (SidebarMenu$1) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(global = global || self, global.VueLayoutComponents = factory());
+}(this, function () { 'use strict';
 
-	SidebarMenu$1 = SidebarMenu$1 && SidebarMenu$1.hasOwnProperty('default') ? SidebarMenu$1['default'] : SidebarMenu$1;
-
-	function debounce (func, wait, immediate) {
-		var timeout;
-		return function() {
-			var context = this, args = arguments;
-			var later = function() {
-				timeout = null;
-				if (!immediate) { func.apply(context, args); }
-			};
-			var callNow = immediate && !timeout;
-			clearTimeout(timeout);
-			timeout = setTimeout(later, wait);
-			if (callNow) { func.apply(context, args); }
-		};
-	}
-
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
+	//
 	//
 
 	var script = {
-		components: {
-			SidebarMenu: SidebarMenu$1
-		},
+		name: "sidebar-menu",
 		props: {
-			title: {
-				type: String,
-				default: null
-			},
-			icon: {
-				type: String,
-				default: null
-			},
-			sidebarLogoUrl: {
-				type: String,
-				default: "/"
-			},
-			sidebarLogoImage: {
-				type: String,
-				default: null
-			},
-			closeOnEsc: {
+			show: {
 				type: Boolean,
-				default: true
+				default: false
 			},
-			type: {
+			logoUrl: {
 				type: String,
-				default: null,
-				validator: function(value) {
-					if(value){
-						return ["basic"].indexOf(value) !== -1;
-					}
-					return true;
-				}
+				default: null
+			},
+			logoImage: {
+				type: String,
+				default: null
 			}
-		},
-		data: function(){
-			return {
-				isSidebarOpen: false
-			};
-		},
-		created: function(){
-			var _parent = this;
-
-			window.VueLayout = {
-				_stgs: {
-					_esc: _parent.closeOnEsc,
-					_brk: 992,
-					_ltyp: _parent.type
-				}
-			};
-
-			window.addEventListener("resize", debounce(function(event){
-				if(event.target.innerWidth >= window.VueLayout._stgs._brk) {
-					_parent.isSidebarOpen = false;
-				}
-			}, 500));
 		}
 	};
 
@@ -172,11 +132,9 @@
 	var __vue_script__ = script;
 
 	/* template */
-	var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"layout",class:_vm.type},[_c('sidebar-menu',{attrs:{"show":_vm.isSidebarOpen,"logo-url":_vm.sidebarLogoUrl,"logo-image":_vm.sidebarLogoImage}},[_vm._t("sidebar")],2),_vm._v(" "),_c('div',{staticClass:"layout-content"},[_c('div',{staticClass:"layout-header",class:{
-					'active': _vm.isSidebarOpen
-			     }},[_c('button',{staticClass:"layout-header-toggle",on:{"click":function($event){_vm.isSidebarOpen = !_vm.isSidebarOpen;}}},[_c('span',{attrs:{"aria-hidden":"true"}})]),_vm._v(" "),_c('div',{staticClass:"layout-header-holder"},[_c('div',{staticClass:"layout-header-left"},[(_vm.$slots.headerLeft)?_vm._t("headerLeft"):_vm._e(),_vm._v(" "),(!_vm.$slots.headerLeft && _vm.title)?_c('h3',{staticClass:"layout-header-title"},[(_vm.icon)?_c('i',{class:_vm.icon}):_vm._e(),_vm._v("\n\t\t\t\t\t\t"+_vm._s(_vm.title)+"\n\t\t\t\t\t")]):_vm._e()],2),_vm._v(" "),(_vm.$slots.headerRight)?_c('div',{staticClass:"layout-header-right"},[_vm._t("headerRight")],2):_vm._e()])]),_vm._v(" "),_c('div',{staticClass:"layout-body"},[_vm._t("default")],2)]),_vm._v(" "),(_vm.type === 'basic')?_c('div',{staticClass:"overlay",class:{
-				'show': _vm.isSidebarOpen
-		     },on:{"click":function($event){_vm.isSidebarOpen = false;}}},[_vm._v("\n\t\t \n\t")]):_vm._e()],1)};
+	var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"sidebar-menu",class:{
+			'show': _vm.show
+	     }},[(_vm.logoImage)?_c('a',{staticClass:"logo",attrs:{"href":_vm.logoUrl}},[(_vm.logoImage)?_c('img',{attrs:{"src":_vm.logoImage}}):_vm._e()]):_vm._e(),_vm._v(" "),_c('div',{staticClass:"sidebar-menu-wrapper"},[_vm._t("default")],2)])};
 	var __vue_staticRenderFns__ = [];
 
 	  /* style */
@@ -193,7 +151,7 @@
 	  
 
 	  
-	  var Layout = normalizeComponent_1(
+	  var SidebarMenu = normalizeComponent_1(
 	    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
 	    __vue_inject_styles__,
 	    __vue_script__,
@@ -204,42 +162,80 @@
 	    undefined
 	  );
 
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
-	//
+	function debounce (func, wait, immediate) {
+		var timeout;
+		return function() {
+			var context = this, args = arguments;
+			var later = function() {
+				timeout = null;
+				if (!immediate) { func.apply(context, args); }
+			};
+			var callNow = immediate && !timeout;
+			clearTimeout(timeout);
+			timeout = setTimeout(later, wait);
+			if (callNow) { func.apply(context, args); }
+		};
+	}
+
 	//
 
 	var script$1 = {
-		name: "sidebar-menu",
+		components: {
+			SidebarMenu: SidebarMenu
+		},
 		props: {
-			show: {
+			title: {
+				type: String,
+				default: null
+			},
+			icon: {
+				type: String,
+				default: null
+			},
+			sidebarLogoUrl: {
+				type: String,
+				default: "/"
+			},
+			sidebarLogoImage: {
+				type: String,
+				default: null
+			},
+			closeOnEsc: {
 				type: Boolean,
-				default: false
+				default: true
 			},
-			logoUrl: {
+			type: {
 				type: String,
-				default: null
-			},
-			logoImage: {
-				type: String,
-				default: null
+				default: null,
+				validator: function(value) {
+					if(value){
+						return ["basic"].indexOf(value) !== -1;
+					}
+					return true;
+				}
 			}
+		},
+		data: function(){
+			return {
+				isSidebarOpen: false
+			};
+		},
+		created: function(){
+			var _parent = this;
+
+			window.VueLayout = {
+				_stgs: {
+					_esc: _parent.closeOnEsc,
+					_brk: 992,
+					_ltyp: _parent.type
+				}
+			};
+
+			window.addEventListener("resize", debounce(function(event){
+				if(event.target.innerWidth >= window.VueLayout._stgs._brk) {
+					_parent.isSidebarOpen = false;
+				}
+			}, 500));
 		}
 	};
 
@@ -247,9 +243,11 @@
 	var __vue_script__$1 = script$1;
 
 	/* template */
-	var __vue_render__$1 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"sidebar-menu",class:{
-			'show': _vm.show
-	     }},[(_vm.logoImage)?_c('a',{staticClass:"logo",attrs:{"href":_vm.logoUrl}},[(_vm.logoImage)?_c('img',{attrs:{"src":_vm.logoImage}}):_vm._e()]):_vm._e(),_vm._v(" "),_c('div',{staticClass:"sidebar-menu-wrapper"},[_vm._t("default")],2)])};
+	var __vue_render__$1 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"layout",class:_vm.type},[_c('sidebar-menu',{attrs:{"show":_vm.isSidebarOpen,"logo-url":_vm.sidebarLogoUrl,"logo-image":_vm.sidebarLogoImage}},[_vm._t("sidebar")],2),_vm._v(" "),_c('div',{staticClass:"layout-content"},[_c('div',{staticClass:"layout-header",class:{
+					'active': _vm.isSidebarOpen
+			     }},[_c('button',{staticClass:"layout-header-toggle",on:{"click":function($event){_vm.isSidebarOpen = !_vm.isSidebarOpen;}}},[_c('span',{attrs:{"aria-hidden":"true"}})]),_vm._v(" "),_c('div',{staticClass:"layout-header-holder"},[_c('div',{staticClass:"layout-header-left"},[(_vm.$slots.headerLeft)?_vm._t("headerLeft"):_vm._e(),_vm._v(" "),(!_vm.$slots.headerLeft && _vm.title)?_c('h3',{staticClass:"layout-header-title"},[(_vm.icon)?_c('i',{class:_vm.icon}):_vm._e(),_vm._v("\n\t\t\t\t\t\t"+_vm._s(_vm.title)+"\n\t\t\t\t\t")]):_vm._e()],2),_vm._v(" "),(_vm.$slots.headerRight)?_c('div',{staticClass:"layout-header-right"},[_vm._t("headerRight")],2):_vm._e()])]),_vm._v(" "),_c('div',{staticClass:"layout-body"},[_vm._t("default")],2)]),_vm._v(" "),(_vm.type === 'basic')?_c('div',{staticClass:"overlay",class:{
+				'show': _vm.isSidebarOpen
+		     },on:{"click":function($event){_vm.isSidebarOpen = false;}}},[_vm._v("\n\t\t \n\t")]):_vm._e()],1)};
 	var __vue_staticRenderFns__$1 = [];
 
 	  /* style */
@@ -266,7 +264,7 @@
 	  
 
 	  
-	  var SidebarMenu = normalizeComponent_1(
+	  var Layout = normalizeComponent_1(
 	    { render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 },
 	    __vue_inject_styles__$1,
 	    __vue_script__$1,
