@@ -1,7 +1,7 @@
 <template>
 	<div class="sidebar-menu"
 	     :class="{
-			'show': show
+			     'show': show
 	     }"
 	>
 		<a v-if="logoImage"
@@ -10,6 +10,7 @@
 		>
 			<img v-if="logoImage"
 			     :src="logoImage"
+           alt="logo"
 			/>
 		</a>
 		<div class="sidebar-menu-wrapper">
