@@ -1,3 +1,11 @@
+/**
+ * Debounce
+ *
+ * @param func
+ * @param wait
+ * @param immediate
+ * @return {function(): void}
+ */
 export default function (func, wait, immediate) {
 	let timeout;
 	return function() {
