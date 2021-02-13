@@ -1,11 +1,13 @@
-import Layout from "./components/Layout.vue";
-import SidebarMenu from "./components/Menu/SidebarMenu.vue";
-import SidebarMenuItem from "./components/Menu/SidebarMenuItem.vue";
+import VLCLayout from "./components/Layout/VLCLayout";
+import VLCSidebarMenu from "./components/SidebarMenu/VLCSidebarMenu";
+import VLCSidebarMenuItem from "./components/SidebarMenu/VLCSidebarMenuItem";
+import VLCInput from "./components/Form/VLCInput";
 
 export default {
   install(Vue, options) {
-    Vue.component("layout", Layout);
-    Vue.component("sidebar-menu", SidebarMenu);
-    Vue.component("sidebar-menu-item", SidebarMenuItem);
+    Vue.component("vlc-layout", VLCLayout);
+    Vue.component("vlc-sidebar-menu", VLCSidebarMenu);
+    Vue.component("vlc-sidebar-menu-item", VLCSidebarMenuItem);
+    Vue.component("vlc-input", VLCInput);
   }
 };
