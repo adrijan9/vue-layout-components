@@ -1,0 +1,9 @@
+.text {
+	@import "variables";
+
+	@each $type, $color in $textColorsTypes {
+		&-#{$type} {
+			color: $color;
+		}
+	}
+}
