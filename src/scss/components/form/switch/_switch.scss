@@ -1,35 +1,15 @@
 &-switch {
 	@import "variables";
 
-	display: flex;
 	align-items: center;
-
-	&.small {
-		input {
-			&.checked + .slider::before {
-				-webkit-transform: translateX(15px);
-				-ms-transform: translateX(15px);
-				transform: translateX(15px);
-			}
-		}
-		label {
-			width: 40px;
-			height: 25px;
-		}
-		.slider {
-			&::before {
-				height: 17px;
-				width: 17px;
-			}
-		}
-	}
+	display: flex;
 
 	label {
-		position: relative;
 		display: inline-block;
-		width: 60px;
 		height: 34px;
 		margin: 0 5px 0 0;
+		position: relative;
+		width: 60px;
 	}
 
 	span {
@@ -37,37 +17,37 @@
 	}
 
 	input {
+		height: 0;
 		opacity: 0;
 		width: 0;
-		height: 0;
 
 		&.checked + .slider::before {
-			-webkit-transform: translateX(26px);
 			-ms-transform: translateX(26px);
+			-webkit-transform: translateX(26px);
 			transform: translateX(26px);
 		}
 	}
 
 	.slider {
-		position: absolute;
-		cursor: pointer;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background-color: #ccc;
 		-webkit-transition: .4s;
+		background-color: #ccc;
+		bottom: 0;
+		cursor: pointer;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
 		transition: .4s;
 
 		&::before {
-			position: absolute;
+			-webkit-transition: .4s;
+			bottom: 4px;
 			content: "";
 			height: 26px;
-			width: 26px;
 			left: 4px;
-			bottom: 4px;
-			-webkit-transition: .4s;
+			position: absolute;
 			transition: .4s;
+			width: 26px;
 		}
 
 		&.round {
@@ -91,6 +71,26 @@
 				&::before {
 					background-color: map-get($value, "dot");
 				}
+			}
+		}
+	}
+
+	&.small {
+		input {
+			&.checked + .slider::before {
+				-ms-transform: translateX(15px);
+				-webkit-transform: translateX(15px);
+				transform: translateX(15px);
+			}
+		}
+		label {
+			height: 25px;
+			width: 40px;
+		}
+		.slider {
+			&::before {
+				height: 17px;
+				width: 17px;
 			}
 		}
 	}
