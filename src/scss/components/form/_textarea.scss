@@ -1,0 +1,11 @@
+&-textarea {
+	border: 1px solid $lightGrey;
+	outline: none;
+	padding: 10px;
+	transition: all .4s;
+	width: 100%;
+
+	&:focus {
+		border-color: $middleDarkGrey;
+	}
+}
