@@ -1,3 +1,8 @@
+// colors
+$red: #b70c1c;
+$green: #4BB543;
+$yellow: #ffcc00;
+$blue: #2196F3;
 $white: #fff;
 $black: #000;
 $lightGrey: #e0e0e0;
@@ -5,16 +10,15 @@ $lighterGrey: #f6f6f6;
 $middleDarkGrey: #7e7e7e;
 $darkGrey: #2d2d2d;
 
-$mobileScreenStart: 992px;
-
+// sidebar
 $sidebarWidth: 90px;
 $sidebarBackground: #2d2d2d;
 $sidebarSubMenuBackground: #3e3e3e;
 $sidebarLinkHoverActive: #535353;
 $sidebarDarker: #282625;
 
-$danger: #b70c1c;
-$success: #4BB543;
-$warning: #ffcc00;
-
+// transitions
 $defaultTransition: all .4s;
+
+// responsive
+$mobileScreenStart: 992px;
