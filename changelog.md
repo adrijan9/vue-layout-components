@@ -6,8 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.0.0] - 2021-02-14
 ### Added
-- Added custom font icons
+- Switch component
+- Custom font icons
 - Alert component added
+### Changed
 - Changed layout tags 
 
 ## [1.1.0] - 2020-08-17

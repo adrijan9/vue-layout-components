@@ -1,0 +1,27 @@
+$switchTypes: (
+		"black": (
+				"background": $black,
+				"dot": $white,
+				"shadow": $white
+		),
+		"red": (
+				"background": $red,
+				"dot": $white,
+				"shadow": $red
+		),
+		"green": (
+				"background": $green,
+				"dot": $white,
+				"shadow": $green
+		),
+		"yellow": (
+				"background": $yellow,
+				"dot": $white,
+				"shadow": $yellow
+		),
+		"blue": (
+				"background": $blue,
+				"dot": $white,
+				"shadow": $blue,
+		)
+);
