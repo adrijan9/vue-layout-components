@@ -16,27 +16,35 @@ $alertTypes: (
 				)
 		),
 		"danger": (
-				"background": $danger,
+				"background": $red,
 				"color": $white,
-				"border": 1px solid $danger,
+				"border": 1px solid $red,
 				"close": (
 						"color": $white
 				)
 		),
 		"success": (
-				"background": $success,
+				"background": $green,
 				"color": $white,
-				"border": 1px solid $success,
+				"border": 1px solid $green,
 				"close": (
 						"color": $white
 				)
 		),
 		"warning": (
-				"background": $warning,
+				"background": $yellow,
 				"color": $black,
-				"border": 1px solid $warning,
+				"border": 1px solid $yellow,
 				"close": (
 						"color": $black
+				)
+		),
+		"blue": (
+				"background": $blue,
+				"color": $white,
+				"border": 1px solid $blue,
+				"close": (
+						"color": $white
 				)
 		)
 );
