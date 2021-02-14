@@ -24,6 +24,7 @@
 	@media (min-width: $mobileScreenStart) {
 		display: block;
 		position: fixed;
+		z-index: 999;
 	}
 
 	.logo {
@@ -129,7 +130,7 @@
 		}
 
 		&-wrapper {
-			background: $sidebarSubMenuBackgorund;
+			background: $sidebarSubMenuBackground;
 			padding: 20px;
 		}
 
