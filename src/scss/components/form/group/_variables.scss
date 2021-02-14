@@ -1,0 +1,42 @@
+$fromGroupErrorTypes: (
+		"white": (
+				"background": $white,
+				"color": $black,
+				"border": 1px solid $lighterGrey,
+				"close": (
+						"color": $black
+				)
+		),
+		"black": (
+				"background": $black,
+				"color": $white,
+				"border": 1px solid $black,
+				"close": (
+						"color": $white
+				)
+		),
+		"danger": (
+				"background": $red,
+				"color": $white,
+				"border": 1px solid $red,
+				"close": (
+						"color": $white
+				)
+		),
+		"success": (
+				"background": $green,
+				"color": $white,
+				"border": 1px solid $green,
+				"close": (
+						"color": $white
+				)
+		),
+		"warning": (
+				"background": $yellow,
+				"color": $black,
+				"border": 1px solid $yellow,
+				"close": (
+						"color": $black
+				)
+		)
+);

@@ -11,6 +11,12 @@ body {
     padding: 0;
     width: 100%;
 }
+
+@import "../../src/assets/fonts/vlc-icons/vlc-icons.css";
+
 @import "./variables";
 @import "./components/layout/layout";
-@import "./components/sidebar/sidebar-menu";
+@import "./components/sidebar-menu/sidebar-menu";
+@import "./components/form/form";
+@import "./utils/text/text";
+@import "./components/alert/alert";
