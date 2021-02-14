@@ -1,0 +1,30 @@
+@font-face {
+    font-family: "vlc-icons";
+    src: url("./vlc-icons.eot?f879a94f79be0497b1ea5ec75cee4709#iefix") format("embedded-opentype"),
+url("./vlc-icons.woff2?f879a94f79be0497b1ea5ec75cee4709") format("woff2"),
+url("./vlc-icons.woff?f879a94f79be0497b1ea5ec75cee4709") format("woff");
+}
+
+i[class^="icon-"]:before, i[class*=" icon-"]:before {
+    font-family: vlc-icons !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-checked:before {
+    content: "\f101";
+}
+.icon-close:before {
+    content: "\f102";
+}
+.icon-exclamation:before {
+    content: "\f103";
+}
+.icon-warning:before {
+    content: "\f104";
+}
