@@ -1,0 +1,39 @@
+.alert {
+	@import "variables";
+
+	align-items: center;
+	border: 1px solid #e0e0e0;
+	display: flex;
+	flex: 1;
+	justify-content: space-between;
+	padding: 15px;
+
+	.close {
+		background-color: transparent;
+		border: none;
+		height: 25px;
+		outline: none;
+		transition: $defaultTransition;
+		width: 25px;
+
+		&:hover,
+		&:focus {
+			opacity: .7;
+		}
+	}
+
+	@each $type, $value in $alertTypes {
+		&.#{$type} {
+			background-color: map-get($value, "background");
+			border: map-get($value, "border");
+			color: map-get($value, "color");
+
+			.close {
+				color: map-get(
+								map-get($value, "close"),
+								"color"
+				)
+			}
+		}
+	}
+}

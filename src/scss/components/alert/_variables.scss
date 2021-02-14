@@ -1,0 +1,42 @@
+$alertTypes: (
+		"white": (
+				"background": $white,
+				"color": $black,
+				"border": 1px solid $lighterGrey,
+				"close": (
+						"color": $black
+				)
+		),
+		"black": (
+				"background": $black,
+				"color": $white,
+				"border": 1px solid $black,
+				"close": (
+						"color": $white
+				)
+		),
+		"danger": (
+				"background": $danger,
+				"color": $white,
+				"border": 1px solid $danger,
+				"close": (
+						"color": $white
+				)
+		),
+		"success": (
+				"background": $success,
+				"color": $white,
+				"border": 1px solid $success,
+				"close": (
+						"color": $white
+				)
+		),
+		"warning": (
+				"background": $warning,
+				"color": $black,
+				"border": 1px solid $warning,
+				"close": (
+						"color": $black
+				)
+		)
+);
